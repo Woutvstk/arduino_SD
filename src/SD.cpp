@@ -334,11 +334,17 @@ namespace SDLib {
 
 
 
-  /* Implementation of class used to create `SDCard` object. */
+ /**
+    Implementation of class used to create `SDCard` object.
 
+   \param[in] cspin SD card chip select pin
+   \param[in] spi Not used, for compatibility with function call of esp32 sd library, choice of SPI bus defined with SDCARD_SPI
 
+   \return The value one, true, is returned for success and
+   the value zero, false, is returned for failure.
+*/
 
-  bool SDClass::begin(uint8_t csPin) {
+  bool SDClass::begin(uint8_t csPin, SPIClass &spi) {  //&spi not used
     if (root.isOpen()) {
       root.close();
     }
