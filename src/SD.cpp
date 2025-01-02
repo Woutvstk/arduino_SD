@@ -372,26 +372,48 @@ namespace SDLib {
            root.openRoot(volume);
   }
 
+  /*
+  Get information about the size of the card
+  @return Returns the card size in bytes
+  */
+  uint32_t SDClass::cardSize()
+  {
+    return card.cardSizeBlocks()*512;
+  }
+
+
   /**
   Get information about the volume size
-
-  @return Returns the volume size in kB of the first volume/partition
+  @return Returns the volume size in bytes of the first volume/partition
   */
-  uint32_t SDClass::getVolumeSize()
+  uint32_t SDClass::totalBytes()
   {
     uint32_t volumesize = volume.blocksPerCluster();    // clusters are collections of blocks
-    volumesize *= volume.clusterCount();       // we'll have a lot of clusters
-    volumesize /= 2;
-    return (volumesize); //2 blocks make 1kB
+    volumesize *= volume.clusterCount();
+    volumesize *= 512;
+    return (volumesize); //1 block is 512 bytes
   }
 
   /**
   Get card type
   @return 0:none, 1:SDv1, 2:SDv2, 3:SDHC   
   */
-  uint8_t SDClass::getCardType()
+  sdcard_type_t SDClass::cardType()
   {
-    return card.type(); 
+    //translate for compatibility with esp32 SD library
+    switch (card.type())
+    {
+      case 0:
+        return CARD_NONE;
+      case 1:
+        return CARD_SD;
+      case 2:
+        return CARD_SD;
+      case 3:
+        return CARD_SDHC;
+      default:
+        return CARD_NONE;
+    }
   }
     
   //call this when a card is removed. It will allow you to insert and initialise a new card.

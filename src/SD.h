@@ -20,6 +20,7 @@
 #include "utility/SdFat.h"
 #include "utility/SdFatUtil.h"
 #include <SPI.h>
+#include "sd_defines.h"
 
 #define FILE_READ O_READ
 #define FILE_WRITE (O_READ | O_WRITE | O_CREAT | O_APPEND)
@@ -107,9 +108,9 @@ namespace SDLib {
         return rmdir(filepath.c_str());
       }
 
-      uint32_t getVolumeSize();
-
-      uint8_t getCardType();
+      uint32_t cardSize();
+      uint32_t totalBytes();
+      sdcard_type_t cardType();
       
     private:
 

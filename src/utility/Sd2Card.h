@@ -177,7 +177,7 @@ class Sd2Card {
   public:
     /** Construct an instance of Sd2Card. */
     Sd2Card(void) : errorCode_(0), inBlock_(0), partialBlockRead_(0), type_(0) {}
-    uint32_t cardSize(void);
+    uint32_t cardSizeBlocks(void);
     uint8_t erase(uint32_t firstBlock, uint32_t lastBlock);
     uint8_t eraseSingleBlockEnable(void);
     /**

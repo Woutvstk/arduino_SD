@@ -150,7 +150,7 @@ uint8_t Sd2Card::cardCommand(uint8_t cmd, uint32_t arg) {
    \return The number of 512 byte data blocks in the card
            or zero if an error occurs.
 */
-uint32_t Sd2Card::cardSize(void) {
+uint32_t Sd2Card::cardSizeBlocks(void) {
   csd_t csd;
   if (!readCSD(&csd)) {
     return 0;
