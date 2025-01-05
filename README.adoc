@@ -7,7 +7,10 @@ image:https://github.com/{repository-owner}/{repository-name}/actions/workflows/
 image:https://github.com/{repository-owner}/{repository-name}/actions/workflows/compile-examples.yml/badge.svg["Compile Examples status", link="https://github.com/{repository-owner}/{repository-name}/actions/workflows/compile-examples.yml"]
 image:https://github.com/{repository-owner}/{repository-name}/actions/workflows/spell-check.yml/badge.svg["Spell Check status", link="https://github.com/{repository-owner}/{repository-name}/actions/workflows/spell-check.yml"]
 
-The SD library allows for reading from and writing to SD cards.
+The SD library allows for reading from and writing to SD cards. Changes were made in function of its usage in the Meshtastic project.
 
 For more information about this library please visit us at
 http://www.arduino.cc/en/Reference/{repository-name}
+
+For more information about Meshtastic:
+https://meshtastic.org/
